@@ -28,9 +28,8 @@
         <input type="hidden" name="upload" value="1">
         <input type="hidden" name="business" value="amsshoyon@yahoo.com">
 
-        <input type="text" name="item_name_1" value="" id="item_name_1">
-        <input type="text" name="amount_1" value="" id="amount_1">
-        <input type="text" name="quantity_1" value="" id="quantity_1">
+        <input type="hidden" name="item_name_1" value="" id="item_name_1">
+        <input type="hidden" name="amount_1" value="" id="amount_1">
 
         <button type="submit">pay with paypal</button>
     </form>

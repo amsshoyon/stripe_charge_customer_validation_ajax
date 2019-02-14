@@ -142,7 +142,7 @@
             var countChecked = $checkboxes.filter(':checked').length;
             document.getElementById("result").innerHTML = countChecked + ' Items Selected';
 
-            document.getElementById('quantity_1').value = countChecked;
+
 
             var all_name = new Array();
             var amount = 0;
@@ -158,6 +158,26 @@
                 if ($(this).val() == 'resume_review_1_h') {
                     amount = 50;
                 }
+                if ($(this).val() == 'gs_4') {
+                    amount = 197;
+                }
+                if ($(this).val() == 'gs_9') {
+                    amount = 297;
+                }
+                if ($(this).val() == 'gs_12') {
+                    amount = 497;
+                }
+                if ($(this).val() == 'gs_15') {
+                    amount = 797;
+                }
+                if ($(this).val() == 'interview_coaching_2_hr') {
+                    amount = 197;
+                }
+                if ($(this).val() == 'salary_neg_2_hr') {
+                    amount = 497;
+                }
+
+
                 total_amount = total_amount + amount;
 
             });
