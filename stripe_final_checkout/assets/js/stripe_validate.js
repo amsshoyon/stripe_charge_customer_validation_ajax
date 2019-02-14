@@ -13,8 +13,8 @@ jQuery(function ($) {
     };
 
 
-    // Stripe Subscription
     Stripe.setPublishableKey('pk_test_GWInzEHja1rc77kFIqejIpwe');
+
     $('#checkout-form').submit(function (e) {
 
         //stripe card number and cvc validate on submit
@@ -23,8 +23,43 @@ jQuery(function ($) {
         $('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
         $('.cc-brand').text(cardType);
 
-        var x = confirm("Are you sure?");
-        if (x) {
+        var ischecked = $('input[type = checkbox]:checked').length;
+        var email = $("input[name = email]").val();
+        var card_no = $("input[name = card_no]").val();
+        var cvc_no = $("input[name = cvc_no]").val();
+        var expireMonth = $("#expireMonth option:selected").val();
+        var expireYear = $("#expireYear option:selected").val();
+
+
+
+        if (ischecked <= 0) {
+            document.getElementById("result").innerHTML = "nothing Selected";
+            return false;
+        }
+        if (email == '' || email == null) {
+            document.getElementById("result").innerHTML = "Email Required";
+            return false;
+        }
+        if (card_no == '' || card_no == null) {
+            document.getElementById("result").innerHTML = "Card Required";
+            return false;
+        }
+        if (cvc_no == '' || cvc_no == null) {
+            document.getElementById("result").innerHTML = "CVC Required";
+            return false;
+        }
+        if (expireMonth == '' || expireMonth == null) {
+            document.getElementById("result").innerHTML = "Month Required";
+            return false;
+        }
+        if (expireYear == '' || expireYear == null) {
+            document.getElementById("result").innerHTML = "Year Required";
+            return false;
+        }
+
+
+
+        if (confirm("Are you sure?")) {
             //Fetching data from form :Start
             $form = $(this);
             $form.find('button').prop('disabled', true);
@@ -78,6 +113,7 @@ jQuery(function ($) {
 
                     }).done(function () {
                         $("#checkout-form").trigger("reset");
+                        document.getElementById("result").innerHTML = "Succeed";
                         $form.find('button').prop('disabled', false);
                     });
                 }

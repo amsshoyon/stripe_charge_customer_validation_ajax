@@ -8,34 +8,31 @@
     </div>
     <div class="single-line">
         <label for="email">email</label>
-        <input type="email" name="email" placeholder="Your best email address" required>
+        <input type="email" name="email" placeholder="Your best email address">
     </div>
 
     <?php include('include/stripe.php'); ?>
 
     <div class="single-line text-center">
-        <button type="submit" Onclick="">Sign Up</button>
+        <button type="submit">Sign Up</button>
     </div>
+
     <div class="checkout-payment-icon text-center">
         <img src="assets/images/paymenticon.png" alt="">
     </div>
 </form>
 
+<div class="single-line text-center">
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="POST">
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="upload" value="1">
+        <input type="hidden" name="business" value="amsshoyon@yahoo.com">
 
+        <input type="text" name="item_name_1" value="" id="item_name_1">
+        <input type="text" name="amount_1" value="" id="amount_1">
+        <input type="text" name="quantity_1" value="" id="quantity_1">
 
-<script>
-    function select() {
-        var ischecked = $('input[type=checkbox]:checked').length;
-        if (ischecked <= 0) {
-            alert("No Record Selected");
-            return false;
-        } else {
-            $('#selectItem').modal('hide');
-            var $checkboxes = $('input[type="checkbox"]');
-            var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
-            console.log(countCheckedCheckboxes);
-            document.getElementById("result").innerHTML = countCheckedCheckboxes;
-        }
-    }
+        <button type="submit">pay with paypal</button>
+    </form>
 
-</script>
+</div>

@@ -128,3 +128,50 @@
     </div>
 
 </div>
+
+
+<script>
+    function select() {
+        var ischecked = $('input[type=checkbox]:checked').length;
+        if (ischecked <= 0) {
+            alert("No Record Selected");
+            return false;
+        } else {
+            $('#selectItem').modal('hide');
+            var $checkboxes = $('input[type="checkbox"]');
+            var countChecked = $checkboxes.filter(':checked').length;
+            document.getElementById("result").innerHTML = countChecked + ' Items Selected';
+
+            document.getElementById('quantity_1').value = countChecked;
+
+            var all_name = new Array();
+            var amount = 0;
+            var total_amount = 0;
+
+            $("input:checked").each(function() {
+
+                all_name.push($(this).val());
+
+                if ($(this).val() == 'federal_job_search_coaching_1_hr') {
+                    amount = 50;
+                }
+                if ($(this).val() == 'resume_review_1_h') {
+                    amount = 50;
+                }
+                total_amount = total_amount + amount;
+
+            });
+
+
+            console.log(all_name);
+            console.log(amount);
+            document.getElementById('item_name_1').value = all_name;
+            document.getElementById('amount_1').value = total_amount;
+            return true;
+        }
+
+
+
+    }
+
+</script>
