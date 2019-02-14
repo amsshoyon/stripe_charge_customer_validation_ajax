@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,7 +53,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-md-12">
-                      <div class="pricing">
+                    <div class="pricing">
                         <h4 class="text-center">Our Pricing</h4>
 
                         <div class="pricing-table">
@@ -96,72 +97,8 @@
                         </div>
                     </div>
                     <div class="checkout-form-area">
-                        <form class="checkout-form" id="checkout-form" method="POST">
-                            <span id="payment-errors" style="font-size:12px;"></span>
-                            <div class="select-option">
-                               
-                                <label for="payment_name" class="control-label">Select Option </label>
-                                <select name="payment_name" id="payment_name" class="form-control" required>
-                                    <option value="" selected>Select</option>
-                                    <option value="federal_job_search_coaching_1_hr">Federal Job Search Coaching (1 Hour)</option>
-                                    <option value="resume_review_1_hr">Resume Review (1 Hour)</option>
-                                    <option value="gs_4">Resume Writing: GS-4 and below</option>
-                                    <option value="gs_9">Resume Writing: GS-5/7/9</option>
-                                    <option value="gs_12">Resume Writing: GS-5/7/9 GS-10/11/12</option>
-                                    <option value="gs_15">Resume Writing: GS-13/14/15</option>
-                                    <option value="interview_coaching_2_hr">Interview Coaching (2 Hours)</option>
-                                    <option value="salary_neg_2_hr">Salary/Benefits Negotiation (2 Hours)</option>
-                                </select>
 
-                            </div>
-                            <div class="single-line">
-                                <label for="email">email</label>
-                                <input type="email" name="email" placeholder="Your best email address" required>
-                            </div>
-                            <div class="single-line single-inline-dbl">
-
-                                <div class="card-number">
-                                    <label for="cc-number" class="control-label">CREDIT CARD NUMBER <small class="text-muted"><span class="cc-brand"></span></small></label>
-                                    <input id="cc-number" type="tel" class="cc-number" autocomplete="cc-number" data-stripe="number" placeholder="Card number" required>
-                                </div>
-                                <div class="card-code">
-                                    <label for="cardCode">CVC Code:</label>
-                                    <input type="tel" class="cc-cvc" data-stripe="cvc" placeholder="CVC" required>
-                                </div>
-                            </div>
-                            <div class="single-line single-inline-dbl">
-                                <div class="exp-month">
-                                    <label for="expireMonth">Expiry Month</label>
-                                    <select name="expireMonth" data-stripe="exp-month" class="" required>
-                                        <option value="" selected>Select Month</option>
-                                        <?php
-											for($month=1; $month <= 12; $month++){
-												echo '<option value="'.$month.'">'.date('F', mktime(0, 0, 0, $month, 1)).'</option>';
-											}
-										?>
-                                    </select>
-                                </div>
-                                <div class="exp-year">
-                                    <label for="expireYear">Expiry Year</label>
-                                    <select name="expireYear" data-stripe="exp-year" required>
-                                        <option value="" selected>Select Year</option>
-                                        <?php
-											$cur_year = date('Y');
-											for ($i=0; $i<=10; $i++) {
-											    echo '<option value="'.$cur_year.'">'.$cur_year.'</option>';
-											    $cur_year++;
-											}
-										?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="single-line text-center">
-                                <button type="submit" Onclick="">Sign Up</button>
-                            </div>
-                            <div class="checkout-payment-icon text-center">
-                                <img src="assets/images/paymenticon.png" alt="">
-                            </div>
-                        </form>
+                        <?php include('include/payment.php'); ?>
 
                         <hr class="divider">
                         <div class="checkout-security">
@@ -185,213 +122,213 @@
                             </div>
                         </div>
                     </div>
-                     <section id="faqs" class="faq-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="faq-header text-center">
-                        <h2>Frequently Asked Questions </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="faq-content">
-                        <div class="faq-single-box">
-                            <div class="faq-box-header">
+                    <section id="faqs" class="faq-area">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="faq-header text-center">
+                                        <h2>Frequently Asked Questions </h2>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="faq-box-body">
-                                <div class="accordion" id="faqStart1">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="start1">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses1" aria-expanded="true" aria-controls="collapses1">
-                                                    What’s your turnaround time on a federal resume?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapses1" class="collapse" aria-labelledby="start1" data-parent="#faqStart">
-                                            <div class="card-body">
-                                                Typically, 3-5 days. This is dependent on the grade level you are pursuing, the scope of the
-                                                project, word count and research we have to conduct. Upon your initial intake interview, we will
-                                                provide you with the turnaround time.
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="faq-content">
+                                        <div class="faq-single-box">
+                                            <div class="faq-box-header">
+                                            </div>
+                                            <div class="faq-box-body">
+                                                <div class="accordion" id="faqStart1">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="start1">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses1" aria-expanded="true" aria-controls="collapses1">
+                                                                    What’s your turnaround time on a federal resume?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapses1" class="collapse" aria-labelledby="start1" data-parent="#faqStart">
+                                                            <div class="card-body">
+                                                                Typically, 3-5 days. This is dependent on the grade level you are pursuing, the scope of the
+                                                                project, word count and research we have to conduct. Upon your initial intake interview, we will
+                                                                provide you with the turnaround time.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion" id="faqStart2">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="start2">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses2" aria-expanded="true" aria-controls="collapses2">
+                                                                    How do you control for quality?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapses2" class="collapse" aria-labelledby="start2" data-parent="#faqStart">
+                                                            <div class="card-body">
+                                                                You can apply a coupon to a future appointment by logging into your account and clicking your name in the top right hand corner. You can then select “redeem voucher” and enter your code. The system will automatically apply the code to your next appointment. You can not apply your coupon to past appointment that are already completed.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion" id="faqStart3">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="start3">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses3" aria-expanded="true" aria-controls="collapses3">
+                                                                    What is included in a standard cleaning?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapses3" class="collapse" aria-labelledby="start3" data-parent="#faqStart">
+                                                            <div class="card-body">
+                                                                We have an in-house editor who looks over every resume before going your way - we check our
+                                                                resume articles through various measures, including spell-checkers, readability, keyword
+                                                                density, plagiarism and more.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion" id="faqStart4">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="start4">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses4" aria-expanded="true" aria-controls="collapses4">
+                                                                    What is the length of the resumes?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapses4" class="collapse" aria-labelledby="start4" data-parent="#faqStart">
+                                                            <div class="card-body">
+                                                                The preferred length of federal resumes is 3-5 pages, so that is where we try to land. Just keep
+                                                                in mind that the longer the resume, the more time it takes to write, increasing your turnaround
+                                                                time.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion" id="faqStart5">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="start5">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses5" aria-expanded="true" aria-controls="collapses5">
+                                                                    What are Special Projects?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapses5" class="collapse" aria-labelledby="start5" data-parent="#faqStart">
+                                                            <div class="card-body">
+                                                                We can take care of all your writing needs. Cover letters, LinkedIn profiles, thank you letters,
+                                                                "Knowledge/Skills/Abilities" (KSA) responses, narrative essays - you name it, we write it. Shoot
+                                                                us a message with details of your project, and we’ll send you your special quote.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="accordion" id="faqStart2">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="start2">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses2" aria-expanded="true" aria-controls="collapses2">
-                                                    How do you control for quality?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapses2" class="collapse" aria-labelledby="start2" data-parent="#faqStart">
-                                            <div class="card-body">
-                                                You can apply a coupon to a future appointment by logging into your account and clicking your name in the top right hand corner. You can then select “redeem voucher” and enter your code. The system will automatically apply the code to your next appointment. You can not apply your coupon to past appointment that are already completed.
+                                        <div class="faq-single-box">
+                                            <div class="faq-box-header">
+
+                                            </div>
+                                            <div class="faq-box-body">
+                                                <div class="accordion" id="faqStart6">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="start6">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses6" aria-expanded="true" aria-controls="collapses6">
+                                                                    Where are you based?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapses6" class="collapse" aria-labelledby="start6" data-parent="#faqStart">
+                                                            <div class="card-body">
+                                                                We’re based in in the Heartland of the good ol' USA -- Iowa. However, our team of writers are
+                                                                virtual and work remotely from all around the country.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion" id="faqAccount1">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="acoount1">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapsea7" aria-expanded="true" aria-controls="collapsea1">
+                                                                    Do you have any hidden costs?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapsea7" class="collapse" aria-labelledby="acoount1" data-parent="#faqAccount">
+                                                            <div class="card-body">
+                                                                No. We perform resume reviews, federal resume writing, interview coaching, and salary/benefits
+                                                                negotiation assistance on a flat-fee basis. Any additional costs would be incurred only at your
+                                                                request for additional services or special projects.
+                                                                request for additional services or special projects.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion" id="faqAccount2">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="acoount2">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapsea8" aria-expanded="true" aria-controls="collapsea2">
+                                                                    What are your business hours?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapsea8" class="collapse" aria-labelledby="acoount2" data-parent="#faqAccount">
+                                                            <div class="card-body">
+                                                                Mon-Fri 9am-9pm EST.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion" id="faqAccount3">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="account3">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapsea9" aria-expanded="true" aria-controls="collapsea3">
+                                                                    Are you a Veteran-owned business?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapsea9" class="collapse" aria-labelledby="account3" data-parent="#faqAccount">
+                                                            <div class="card-body">
+                                                                Yes. Ken, the company owner, is a Navy Vet.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion" id="faqAccount4">
+                                                    <div class="card faq-card">
+                                                        <div class="card-header" id="account4">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapsea10" aria-expanded="true" aria-controls="collapsea4">
+                                                                    What if I have concerns/comments/questions before, during, or after hiring your
+                                                                    company to write my federal resume?
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapsea10" class="collapse" aria-labelledby="account4" data-parent="#faqAccount">
+                                                            <div class="card-body">
+                                                                Send any all questions, comments, or concerns to ​Info@FastFederalResumes.com​ and we will
+                                                                get you squared away! Please give us one business day to respond.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
-                                <div class="accordion" id="faqStart3">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="start3">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses3" aria-expanded="true" aria-controls="collapses3">
-                                                    What is included in a standard cleaning?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapses3" class="collapse" aria-labelledby="start3" data-parent="#faqStart">
-                                            <div class="card-body">
-                                                We have an in-house editor who looks over every resume before going your way - we check our
-                                                resume articles through various measures, including spell-checkers, readability, keyword
-                                                density, plagiarism and more.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion" id="faqStart4">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="start4">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses4" aria-expanded="true" aria-controls="collapses4">
-                                                    What is the length of the resumes?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapses4" class="collapse" aria-labelledby="start4" data-parent="#faqStart">
-                                            <div class="card-body">
-                                                The preferred length of federal resumes is 3-5 pages, so that is where we try to land. Just keep
-                                                in mind that the longer the resume, the more time it takes to write, increasing your turnaround
-                                                time.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion" id="faqStart5">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="start5">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses5" aria-expanded="true" aria-controls="collapses5">
-                                                    What are Special Projects?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapses5" class="collapse" aria-labelledby="start5" data-parent="#faqStart">
-                                            <div class="card-body">
-                                                We can take care of all your writing needs. Cover letters, LinkedIn profiles, thank you letters,
-                                                "Knowledge/Skills/Abilities" (KSA) responses, narrative essays - you name it, we write it. Shoot
-                                                us a message with details of your project, and we’ll send you your special quote.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
                             </div>
                         </div>
-                        <div class="faq-single-box">
-                            <div class="faq-box-header">
-
-                            </div>
-                            <div class="faq-box-body">
-                               <div class="accordion" id="faqStart6">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="start6">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapses6" aria-expanded="true" aria-controls="collapses6">
-                                                    Where are you based?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapses6" class="collapse" aria-labelledby="start6" data-parent="#faqStart">
-                                            <div class="card-body">
-                                                We’re based in in the Heartland of the good ol' USA -- Iowa. However, our team of writers are
-                                                virtual and work remotely from all around the country.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion" id="faqAccount1">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="acoount1">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapsea7" aria-expanded="true" aria-controls="collapsea1">
-                                                    Do you have any hidden costs?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapsea7" class="collapse" aria-labelledby="acoount1" data-parent="#faqAccount">
-                                            <div class="card-body">
-                                                No. We perform resume reviews, federal resume writing, interview coaching, and salary/benefits
-                                                negotiation assistance on a flat-fee basis. Any additional costs would be incurred only at your
-                                                request for additional services or special projects.
-                                                request for additional services or special projects.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion" id="faqAccount2">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="acoount2">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapsea8" aria-expanded="true" aria-controls="collapsea2">
-                                                    What are your business hours?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapsea8" class="collapse" aria-labelledby="acoount2" data-parent="#faqAccount">
-                                            <div class="card-body">
-                                                Mon-Fri 9am-9pm EST.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion" id="faqAccount3">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="account3">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapsea9" aria-expanded="true" aria-controls="collapsea3">
-                                                    Are you a Veteran-owned business?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapsea9" class="collapse" aria-labelledby="account3" data-parent="#faqAccount">
-                                            <div class="card-body">
-                                                Yes. Ken, the company owner, is a Navy Vet.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion" id="faqAccount4">
-                                    <div class="card faq-card">
-                                        <div class="card-header" id="account4">
-                                            <h5 class="mb-0">
-                                                <button class="btn-link faq-btn collapsed" type="button" data-toggle="collapse" data-target="#collapsea10" aria-expanded="true" aria-controls="collapsea4">
-                                                    What if I have concerns/comments/questions before, during, or after hiring your
-                                                    company to write my federal resume?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapsea10" class="collapse" aria-labelledby="account4" data-parent="#faqAccount">
-                                            <div class="card-body">
-                                                Send any all questions, comments, or concerns to ​Info@FastFederalResumes.com​ and we will
-                                                get you squared away! Please give us one business day to respond.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    </section>
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="checkout-video mb-20">

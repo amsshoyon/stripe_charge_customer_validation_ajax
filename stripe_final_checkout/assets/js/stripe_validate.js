@@ -39,20 +39,27 @@ jQuery(function ($) {
                     $form.find('button').prop('disabled', false);
                 } else {
                     var token = response.id;
-
+                    var payment_name = new Array();
+                    $("input:checked").each(function () {
+                        payment_name.push($(this).val());
+                    });
                     var formData = {
                         'email': $('input[name=email]').val(),
-                        'payment_name': $('#payment_name option:selected').val(),
+                        'payment_name': payment_name,
                         'stripe-token': token
                     };
+                    //                    console.log(payment_name);
+                    //                    console.log(token);
+                    //                    console.log(formData);
                     var extracted1 = 'json';
                     $.ajax({
                         type: "POST",
                         url: "checkout_submit.php",
                         data: formData,
                         success: function (data) {
+                            console.log(data);
                             var obj = JSON.parse(data);
-                            console.log(obj);
+
                             $.confirm({
                                 title: obj.title,
                                 content: obj.content,
