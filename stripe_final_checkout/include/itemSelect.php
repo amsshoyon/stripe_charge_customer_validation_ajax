@@ -119,7 +119,6 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <!--                    <button type="button" class=" btn-danger" data-dismiss="modal">SELECT</button>-->
                     <button type="button" class=" btn-danger" onclick="return select()">SELECT</button>
                 </div>
 
