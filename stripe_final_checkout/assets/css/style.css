@@ -2019,17 +2019,19 @@ section.patrons-area ul li {
 
 /*MOdal*/
 a.selectItem {
-    width: 100%;
+    width: 80%;
     border: 1px solid darkgrey;
     border-radius: 5px;
     padding: 12px 12px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
     display: block;
-    background-color: transparent;
-    color: #000 !important;
+    background-color: #BD2234;
+    color: #fff !important;
     text-align: left;
     font-size: 18px;
     position: relative;
+    margin: 10px auto;
+    text-align: center;
 }
 
 a.selectItem:after {
@@ -2109,26 +2111,6 @@ a.selectItem:after {
 
 
 /*payments tab*/
-.project-tab {
-    padding: 10%;
-    margin-top: -8%;
-}
-
-.project-tab a#nav-home-tab {
-    max-width: 50%;
-    width: 100%;
-}
-
-.project-tab #tabs {
-    background: #007b5e;
-    color: #eee;
-}
-
-.project-tab #tabs h6.section-title {
-    color: #eee;
-}
-
-.project-tab #tabs .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
     color: #0062cc;
     background-color: transparent;
@@ -2138,26 +2120,76 @@ a.selectItem:after {
     font-weight: bold;
 }
 
-.project-tab .nav-link {
-    border: 1px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    color: #0062cc;
-    font-size: 16px;
-    font-weight: 600;
+li.nav-item {
+    width: 50%;
+    text-align: center;
 }
 
-.project-tab .nav-link:hover {
-    border: none;
+.tab-content {
+    padding: 50px 0px;
 }
 
-.project-tab thead {
-    background: #f3f3f3;
-    color: #333;
+/*results*/
+div#item-names {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.project-tab a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
+#item-names div {
+    background-color: rgba(0, 0, 0, .1);
+    padding: 4px 10px;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 7px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+div#item-names div span:hover {
+    color: #BD2234;
+    cursor: pointer;
+}
+
+div#total-amount {
+    max-width: 40%;
+    margin: 0 auto;
+}
+
+div#total-amount div {
+    background-color: rgba(31, 35, 65, 0.6);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/*paypal button*/
+form.checkout-paypal {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+form.checkout-paypal button,
+form.checkout-paypal button:disabled,
+form.checkout-paypal button[disabled] {
+    background: #BD2234;
+    border: 2px solid #BD2234;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 20px 0px;
+    font-size: 18px;
+    margin-top: 11px;
+}
+
+/*select modal close*/
+.select-items .modal .close {
+    cursor: pointer;
+    margin: 0px;
+    padding: 10px 26px;
+    border-radius: 10px;
 }

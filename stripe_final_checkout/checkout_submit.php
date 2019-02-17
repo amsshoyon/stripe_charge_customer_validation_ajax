@@ -9,65 +9,12 @@
     // Get the token from the JS script
     $token = $_POST['stripe-token'];
 
-    $amount = 0;
-    $total_amount = 0;
-    $descriptions = array();
     $success = 0;
     $email = $_POST['email'];
- $description_str = '';
-    $payment_names = $_POST['payment_name'];
-    $count = count($payment_names);
+    $amount = $_POST['amount'];
+    $description = $_POST['item_name'];
 
-foreach($payment_names as $payment_name){
-    
-    if($payment_name == 'federal_job_search_coaching_1_hr'){
-        $amount = 5000;
-        $description = 'Federal Job Search Coaching (1 Hour)';
-    }
-    elseif($payment_name == 'resume_review_1_hr'){
-        $amount = 5000;
-        $description = 'Resume Review (1 Hour)';
-    }
-    elseif($payment_name == 'gs_4'){
-        $amount = 19700;
-        $description = 'Resume Writing | GS-4 and below';
-    }
-    elseif($payment_name == 'gs_9'){
-        $amount = 29700;
-        $description = 'Resume Writing | GS-5/7/9';
-    }
-    elseif($payment_name == 'gs_12'){
-        $amount = 49700;
-        $description = 'Resume Writing | GS-5/7/9 GS-10/11/12';
-    }
-    elseif($payment_name == 'gs_15'){
-        $amount = 79700;
-        $description = 'Resume Writing | GS-13/14/15';
-    }
-    elseif($payment_name == 'interview_coaching_2_hr'){
-        $amount = 19700;
-        $description = 'Interview Coaching (2 Hours)';
-    }
-    elseif($payment_name == 'salary_neg_2_hr'){
-        $amount = 49700;
-        $description = 'Salary/Benefits Negotiation (2 Hours)';
-    }
-    else{
-        $amount = 0;
-        $description = '';
-    }
-    $total_amount = $total_amount + $amount;
-    array_push($descriptions,$description);
-}
-
- $desps = count($descriptions);
- if($desps > 1){
- foreach($descriptions as $despo){
- $description_str =  $despo.', '.$description_str;
- }
- }
-
-
+$total_amount = $amount * 100;
 
 if($total_amount > 0){
     
@@ -80,7 +27,7 @@ if($total_amount > 0){
         $charge = \Stripe\Charge::create([
             'amount' => $total_amount,
             'currency' => 'usd',
-            "description" => $description_str,
+            "description" => $description,
             'receipt_email' => $email,
             "customer" => $customer->id
         ]);
@@ -133,7 +80,7 @@ if($total_amount > 0){
         $message = array(
 
             'title' => 'Success',
-            'content' => 'You are successfully charged <strong>$'. $famount.'</strong> for <strong>'.$description_str. '</strong> package.',
+            'content' => 'You are successfully charged <strong>$'. $famount.'</strong> for <strong>'.$description. '</strong>.',
             'type' => 'green',
             'text' => 'Thank You!',
             'btnClass' => 'btn-green',

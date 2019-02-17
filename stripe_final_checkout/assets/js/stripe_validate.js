@@ -25,6 +25,8 @@ jQuery(function ($) {
 
         var ischecked = $('input[type = checkbox]:checked').length;
         var email = $("input[name = email]").val();
+        var amount = $("input[name = amount]").val();
+        var item_name = $("input[name = item_name]").val();
         var card_no = $("input[name = card_no]").val();
         var cvc_no = $("input[name = cvc_no]").val();
         var expireMonth = $("#expireMonth option:selected").val();
@@ -33,27 +35,38 @@ jQuery(function ($) {
 
 
         if (ischecked <= 0) {
-            document.getElementById("result").innerHTML = "nothing Selected";
+            alert('nothing Selected');
+            //document.getElementById("result").innerHTML = "nothing Selected";
+            return false;
+        }
+        if (amount == 0) {
+            alert('nothing Selected');
+            //document.getElementById("result").innerHTML = "nothing Selected";
+            return false;
+        }
+        if (item_name == '' || item_name == null) {
+            alert('nothing Selected');
+            //document.getElementById("result").innerHTML = "nothing Selected";
             return false;
         }
         if (email == '' || email == null) {
-            document.getElementById("result").innerHTML = "Email Required";
+            alert('Email Required');
             return false;
         }
         if (card_no == '' || card_no == null) {
-            document.getElementById("result").innerHTML = "Card Required";
+            alert('Card Required');
             return false;
         }
         if (cvc_no == '' || cvc_no == null) {
-            document.getElementById("result").innerHTML = "CVC Required";
+            alert('CVC Required');
             return false;
         }
         if (expireMonth == '' || expireMonth == null) {
-            document.getElementById("result").innerHTML = "Month Required";
+            alert('Month Required');
             return false;
         }
         if (expireYear == '' || expireYear == null) {
-            document.getElementById("result").innerHTML = "Year Required";
+            alert('Year Required');
             return false;
         }
 
@@ -66,35 +79,35 @@ jQuery(function ($) {
 
             //Creating token for srtipe
             Stripe.card.createToken($form, function (status, response) {
-                //            console.log(status);
-                //            console.log(response);
+                // console.log(status);
+                // console.log(response);
 
                 if (response.error) {
-                    $form.find('#payment-errors').text(response.error.message);
+                    // $form.find('#payment-errors').text(response.error.message);
+                    alert(response.error.message);
                     $form.find('button').prop('disabled', false);
                 } else {
                     var token = response.id;
-                    var payment_name = new Array();
-                    $("input:checked").each(function () {
-                        payment_name.push($(this).val());
-                    });
+                    // var payment_name = new Array();
+                    // $("input:checked").each(function () {
+                    //     payment_name.push($(this).val());
+                    // });
                     var formData = {
                         'email': $('input[name=email]').val(),
-                        'payment_name': payment_name,
+                        'item_name': $('input[name=item_name]').val(),
+                        'amount': $('input[name=amount]').val(),
                         'stripe-token': token
                     };
-                    //                    console.log(payment_name);
-                    //                    console.log(token);
-                    //                    console.log(formData);
+
                     var extracted1 = 'json';
                     $.ajax({
                         type: "POST",
                         url: "checkout_submit.php",
                         data: formData,
                         success: function (data) {
-                            console.log(data);
+                            //console.log(data);
                             var obj = JSON.parse(data);
-
+                            $form.find('button').prop('disabled', false);
                             $.confirm({
                                 title: obj.title,
                                 content: obj.content,
@@ -113,8 +126,9 @@ jQuery(function ($) {
 
                     }).done(function () {
                         $("#checkout-form").trigger("reset");
-                        document.getElementById("result").innerHTML = "Succeed";
-                        $form.find('button').prop('disabled', false);
+                        $('input[type=checkbox]').prop('checked', false);
+                        document.getElementById("item-names").innerHTML = '';
+                        document.getElementById("total-amount").innerHTML = '';
                     });
                 }
             });
